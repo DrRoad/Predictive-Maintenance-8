@@ -33,6 +33,7 @@ kafka-console-producer.sh --broker-list localhost:9092 --topic sensor
 
 6. Start Hadoop and its services
 
+
 7. Configure flume agent for HDFS to get data from Kafka
 
 Configuration file: kafka.config
@@ -66,6 +67,7 @@ flume1.channels.hdfs-channel-1.capacity	=	10000
 
 8. Create the designated directory in HDFS
 
+
 9. Start the flume agent services
 
 flume-ng agent --conf conf --conf-file /home/mayank/flume/kafka.conf --name flume1 -Dflume.root.logger=INFO,console
@@ -73,6 +75,26 @@ flume-ng agent --conf conf --conf-file /home/mayank/flume/kafka.conf --name flum
 
 10. Open the HDFS web interface and check that file or data is going into the HDFS or not.
 
+
+11. Built the pig script that will take the data stored in hdfs and remove all intermediate blank line between two records.
+Name of pig script : dataCleansing.pig
+
+
+12. Make a shel script that will trigger your pig script to an execution on a daily basis.
+Name of shell script : daily_scheduler.sh
+
+
+13. Now your data is cleansed and stored in hdfs see new folder configuration pig and shell script.
+
+
+14. Write a hive script named as SensorSchema.hql that will make an external table on the newly cleansed data.
+Run this as : hive -f SensorSchema.hpl
+
+
+15. Open hive terminal and check that table is created or not.
+
+
+16. Do batch analytics on this table. 
 
 <--------------------------------------------------------------------------------------------------------------------------->
 
