@@ -1,0 +1,3 @@
+########## Run python file############
+
+spark-submit --packages mysql:mysql-connector-java:5.1.39 --master local[4] test_mysql.py
